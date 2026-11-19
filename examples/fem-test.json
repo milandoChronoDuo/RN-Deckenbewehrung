@@ -1,0 +1,10 @@
+{
+  "format": "RN-SYNTHETIC-FEM-1",
+  "units": {"length": "mm", "area": "cm2/m"},
+  "axes": "global_X_Y",
+  "slab_id": "demo",
+  "cells": [
+    {"id":"A", "polygon":[[1000,1000],[2000,1000],[2000,2500],[1000,2500]], "required":{"unten_X":5,"unten_Y":2,"oben_X":0,"oben_Y":0}},
+    {"id":"B", "polygon":[[2200,1000],[3200,1000],[3200,2500],[2200,2500]], "required":{"unten_X":6,"unten_Y":2,"oben_X":0,"oben_Y":0}}
+  ]
+}

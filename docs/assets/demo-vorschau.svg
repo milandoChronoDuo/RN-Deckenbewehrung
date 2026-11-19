@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-400.0 -400.0 8800.0 6800.0" role="img">
+<title>TESTDATEN · unten X · kein Ausführungsplan</title>
+<rect x="-400.0" y="-400.0" width="8800.0" height="6800.0" fill="white"/>
+<text x="0.0" y="-133.33333333333334" font-size="110" fill="#172d3d">TESTDATEN · unten X · kein Ausführungsplan</text>
+<g transform="translate(0,6000.0) scale(1,-1)">
+<path d="M 8000,0 L 8000,6000 L 0,6000 L 0,0 L 8000,0 Z" fill="#f2f4f5" fill-rule="evenodd" stroke="#172d3d" stroke-width="16"/>
+<path d="M 1000,1000 L 2000,1000 L 2000,2500 L 1000,2500 L 1000,1000 Z" fill="hsl(205,65%,49.1667%)" stroke="#326481" stroke-width="8"><title>A: As erforderlich 5 cm²/m</title></path>
+<path d="M 2200,1000 L 3200,1000 L 3200,2500 L 2200,2500 L 2200,1000 Z" fill="hsl(205,65%,40%)" stroke="#326481" stroke-width="8"><title>B: As erforderlich 6 cm²/m</title></path>
+<path d="M 600.0,1000.0 L 3600.0,1000.0" stroke="#a14215" stroke-width="12"><title>Ø12/150 mm; As 7.54 cm²/m</title></path>
+<path d="M 600.0,1150.0 L 3600.0,1150.0" stroke="#a14215" stroke-width="12"><title>Ø12/150 mm; As 7.54 cm²/m</title></path>
+<path d="M 600.0,1300.0 L 3600.0,1300.0" stroke="#a14215" stroke-width="12"><title>Ø12/150 mm; As 7.54 cm²/m</title></path>
+<path d="M 600.0,1450.0 L 3600.0,1450.0" stroke="#a14215" stroke-width="12"><title>Ø12/150 mm; As 7.54 cm²/m</title></path>
+<path d="M 600.0,1600.0 L 3600.0,1600.0" stroke="#a14215" stroke-width="12"><title>Ø12/150 mm; As 7.54 cm²/m</title></path>
+<path d="M 600.0,1750.0 L 3600.0,1750.0" stroke="#a14215" stroke-width="12"><title>Ø12/150 mm; As 7.54 cm²/m</title></path>
+<path d="M 600.0,1900.0 L 3600.0,1900.0" stroke="#a14215" stroke-width="12"><title>Ø12/150 mm; As 7.54 cm²/m</title></path>
+<path d="M 600.0,2050.0 L 3600.0,2050.0" stroke="#a14215" stroke-width="12"><title>Ø12/150 mm; As 7.54 cm²/m</title></path>
+<path d="M 600.0,2200.0 L 3600.0,2200.0" stroke="#a14215" stroke-width="12"><title>Ø12/150 mm; As 7.54 cm²/m</title></path>
+<path d="M 600.0,2350.0 L 3600.0,2350.0" stroke="#a14215" stroke-width="12"><title>Ø12/150 mm; As 7.54 cm²/m</title></path>
+<path d="M 600.0,2500.0 L 3600.0,2500.0" stroke="#a14215" stroke-width="12"><title>Ø12/150 mm; As 7.54 cm²/m</title></path>
+</g>
+</svg>
