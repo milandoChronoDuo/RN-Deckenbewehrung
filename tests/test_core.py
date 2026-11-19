@@ -164,7 +164,7 @@ def test_anchor_and_stock_failure():
 
 
 def test_asf_is_not_silently_json():
-    with pytest.raises(NotImplementedError,match='FRILO'): read_asf('real.asf')
+    with pytest.raises(ValidationError,match='ALLPLOT'): read_asf(ROOT/'examples/fem-test.json')
 
 
 def test_fem_alignment_required():

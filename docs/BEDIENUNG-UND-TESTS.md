@@ -1,12 +1,14 @@
 # Bedienung, Diagnose und lokale Abnahme
 
-Der aktuelle Ablauf in Allplan endet nach **Decke auswählen → Dicke prüfen**.
+Der aktuelle Ablauf in Allplan: **Decke auswählen → Geometrie/UK/OK prüfen →
+ASF wählen → Strukturprüfung lesen**.
 Matten/Rundstahl lässt sich zur Ansicht umschalten. Erzeugung ist gesperrt.
 
 Der separate Demobefehl liest ausschließlich synthetische JSON-Daten und
 schreibt einen Prüfbericht mit As, Kombinationen, Stabkoordinaten und Masse.
 `--strategy stahl`, `ausgewogen` oder `verlegeaufwand` wählt die Bewertung.
-Ein fehlender ASF-Parser erzeugt ausdrücklich NotImplementedError.
+`rn-asf-inspect` liest reale ALLPLOT-5.0-Dateien strukturell; eine automatische
+As-Spaltenzuordnung wird nicht behauptet.
 
 ## Lokale Allplan-Integrationstests (noch nicht ausgeführt)
 
@@ -17,8 +19,8 @@ mit Screenshot dokumentieren. Nur in einer Kopie eines Testprojekts prüfen.
    verständlicher Status. Esc darf keine Elemente erzeugen oder verändern.
 2. Wand/Stütze anklicken: nicht akzeptiert. Decke beim Überfahren hervorheben.
 3. Einschichtige Decke 250 mm: angezeigte Dicke 250 mm. Mehrschichtige Decke:
-   Fehlermeldung. Schräge Decke: noch keine automatische Eignungsprüfung;
-   niemals als für Erzeugung freigegeben interpretieren.
+   Fehlermeldung. Schräge, offene oder verjüngte Decke: Geometrieprüfung muss abbrechen.
+   UK/OK an global verschobener Decke prüfen, Öffnungen mit Modell vergleichen.
 4. Vorher/nachher Elementanzahl vergleichen: Diagnose darf nichts verändern.
 5. NativeElements in einem lokalen SDK-Testskript importieren. Einzelstab
    von (1000,2000,3000) nach (3000,2000,3000), Ø10 erzeugen und prüfen:

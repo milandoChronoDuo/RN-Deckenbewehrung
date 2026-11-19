@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rn-deckenbewehrung"
-version = "0.1.0"
+version = "0.2.0"
 description = "Allplan 2026 Entwicklungsstand und unabhängig prüfbarer Bewehrungskern"
 requires-python = ">=3.11"
 dependencies = ["shapely>=2.0,<3"]
@@ -13,6 +13,7 @@ dependencies = ["shapely>=2.0,<3"]
 test = ["pytest>=8,<10", "lxml>=5,<7"]
 
 [project.scripts]
+rn-asf-inspect = "rn_deckenbewehrung.asf_cli:main"
 rn-demo = "rn_deckenbewehrung.demo:main"
 
 [tool.setuptools.packages.find]

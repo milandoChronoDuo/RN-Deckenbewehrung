@@ -1,73 +1,56 @@
-# Implementierungsstatus 0.1.0
+# Implementierungsstatus 0.2.0
 
-Dieser Stand ist ein Entwicklungsfundament, **kein benutzbares vollständiges
-Bewehrungsplugin**. Die Allplan-Palette erzeugt absichtlich keine Elemente.
+**Weiterhin Entwicklungsstand, keine vollständige produktive
+Bewehrungserzeugung.** Der Einstieg prüft nun Deckengeometrie und echte ASF-
+Dateien. Die automatische Erzeugung bleibt gesperrt.
 
-## Vollständig implementiert und getestet (jeweils im angegebenen Umfang)
+## Vollständig implementiert und getestet – begrenzter Rechenumfang
 
-- Validierte Stabquerschnitte, mm ↔ cm²/m und vier unabhängige Ergebniskanäle.
-- Aktive Lagen kompakt anordnen; Richtung deaktivierter erster Lage verändert
-  die zweite Lage nicht. Einfache vertikale Kollisionsprüfung.
-- Ebene Polygonkontur mit mehreren polygonalen Öffnungen, konkave Konturen,
-  Stabachsen mit Randabstand und Aufteilung an Öffnungen. Kreise können als
-  ausreichend genaue Polygone übergeben werden; kein Allplan-Kreisimport.
-- Mattenkatalog-Datenschnittstelle mit getrenntem As X/Y und „keine Matte“.
-  Das ist kein Zugriff auf den aktiven Allplan-Katalog.
-- Konservative, räumlich begrenzte Grundbewehrungsanrechnung. Wirksame Flächen
-  müssen extern geprüft sein. Teilüberdeckte FEM-Zellen erhalten kein Guthaben.
-- Synthetisches JSON-FEM-Format mit vier Werten je Zelle, Einheiten, Deckenbezug,
-  Koordinatenbestätigung, Öffnungs- und Überlappungsprüfung.
-- Zulagebedarf, geometrischer Bereichsabstand, begrenzte Rechteckzusammenfassung.
-- Kandidatenoptimierung für Rechtecke: As, Abstand, lichter Abstand,
-  geometrisch mögliche Endverankerungen, maximale Stablänge, Masse und Aufwand.
-- Explizite projektspezifische Verankerungs-/Stoßwerte mit Nachweisreferenz;
-  keine normativen Formeln. Stoßlängen werden gespeichert, noch nicht verlegt.
-- Vorschau-Bestätigungslogik und Sperre bei vorhandenen Erzeugungskennungen
-  als reine Domänenlogik, ohne persistente Allplan-Anbindung.
-- JSON-Demobericht; SVG-Prüfvorschau für einen Ergebniskanal.
+- Bisheriger Kern: vier Kanäle, Querschnitte, aktive Lagen kompakt anordnen,
+  Polygongeometrie mit Öffnungen, Stabzuschnitt, konservative Grundanrechnung,
+  Zulagebedarf, begrenzte Bereichszusammenfassung und Kandidatenoptimierung.
+- Echter struktureller ASF-Leser für den beobachteten ALLPLOT-5.0-Dialekt:
+  Konturen, Knoten, Elemente, rohe QM1/QR3-Daten und Materialtabellen;
+  vollständiger Lauf mit der bereitgestellten 20-MB-Datei erfolgreich.
+- Explizite Importprofile und Koordinatenabgleich, keine geratene QM1-Zuordnung.
+- Prismatische Deckenkörper aus Weltkoordinaten: UK, OK, Dicke, Randkonturen
+  einschließlich Durchbrüchen; Ablehnung offener, schiefer und verjüngter Körper.
+- Grundstab-Verlegeplan mit tatsächlichen Höhen, Aussparungsunterbrechungen,
+  Lieferlängenprüfung und lokalen Formpositionsnummern. Keine automatische
+  Stoßplanung/Verankerungsfreigabe oder vorhandene Modellpositionsinventur.
+- Rechteckige Mattenaufteilung mit expliziten Längs-/Querübergreifungen und
+  Randzuschnitt. Öffnungen/nichtrechteckige Flächen werden derzeit abgelehnt.
+- CLI `rn-asf-inspect` und bestehende synthetische Demo/SVG-Prüfvorschau.
 
 ## Implementiert, Allplan-Integrationstest ausstehend
 
-- Script-Object mit SingleElementSelectInteractor und Deckenfilter.
-- Einlesen der Dicke einschichtiger Decken; keine Verifikation horizontaler Lage.
-- Deutsche Diagnosepalette, Umschaltung Matten/Rundstahl; Planungsfelder sind
-  gesperrt, weil sie noch keine Erzeugung steuern. XML-Schema geprüft.
-- Native Fabriken für einen horizontalen Einzelstab und eine rechteckige
-  Katalogmatte. Nicht mit Deckenauswahl oder Schreibvorgängen verbunden.
-- Manuelles Diagnose-Installationspaket; kein produktiver Installer.
+- Deckenfilter und Script-Object-Workflow.
+- Polyhedron3D-Adapter mit dokumentierten globalen Eckpunktzugriffen und
+  Übernahme der geometrisch geprüften UK/OK/Dicke in die Palette.
+- ASF-Dateiauswahl und Anzeige der gelesenen Knoten-/Element-/Ergebniszahlen.
+- Native Einzelstab-/Einzelmattenfabriken. Brücke vom Grundstabplan zur
+  nativen Elementliste mit übergebenen Format-/Layereigenschaften und
+  Prüfung gegen übergebene belegte Positionsnummern. Kein Modellschreibaufruf.
+- Manuelles Diagnosepaket mit gebündelten Standardbibliotheks-Modulen;
+  keine Shapely-Installation im Allplan-Prozess für diese Prüfungen nötig.
 
 ## Weitere Daten oder Entscheidungen erforderlich
 
-- Repräsentative **FRILO-ASF-Datei**, FRILO-Modul und Version, Exportoptionen,
-  Einheiten und zugehörige Modellkontur. ASF wird ausdrücklich abgelehnt.
-- Normausgabe und Nationaler Anhang sowie verifizierte Bemessungsgrundlagen für
-  Verbund, Verankerung, Stöße und konstruktive Grenzen.
-- Lokales Allplan 2026 für Tests von SDK-Laufzeit, Palettenzuständen,
-  Geometrieauswertung, Mattenkatalog und Bewehrungsdarstellung.
+- Die ASF-Beispieldatei liegt jetzt vor. Noch erforderlich: verifizierte
+  QM1/QR3-Semantik, Exporteinheiten und FRILO-Modul/-Version. Siehe ASF-FORMAT.md.
+- Gewählte Normausgabe, Nationaler Anhang und verifizierte Regeln/Nachweise
+  für Verbund, Verankerung und Stöße. Keine pauschale 40d/50d-Automatik.
+- Lokaler Allplan-2026-Test von tatsächlicher Architekturmodellgeometrie,
+  Öffnungen, SDK, Katalog, Palette und nativen Bewehrungselementen.
 
 ## Noch nicht umgesetzt
 
-- Vollständige Deckenauswertung einschließlich globaler UK/OK, Öffnungen,
-  Betonattributen, schiefen Flächen und zusammenhängender Mehrfachauswahl.
-- FRILO-ASF-Parser und Alternative über offiziellen FEM-Import.
-- Produktive Grundbewehrung, Mattenaufteilung/-stöße, Drehung von Matten und
-  Ermittlung tatsächlich wirksamer Bereiche aus erzeugten Elementen.
-- Automatische Normbemessung und automatische Stabstoßplanung.
-- Zulagenhöhen und Kollisionsprüfung zwischen Grundbewehrung und Zulagen;
-  polygonale Zulagenzerlegung; Öffnungsrand-/Eckbewehrung.
-- Allplan-Heatmap, interaktive Auswahl, Verschieben, Teilen, Löschen und
-  anschließende Nachprüfung von Zulagen.
-- Layerauflösung, globale Positionsnummernverwaltung, transaktionale
-  Modellerzeugung, persistente Eigentümerkennungen, sichere Löschung.
-- Plugin-Manager-Paket und Einbindung der SVG-Hilfen in die Palette.
-- Allplan 2027-Kompatibilitätsprüfung.
-
-Es gibt keine automatische Löschfunktion und keine produktive Schreibfunktion.
-Eine bestandene Domänenprüfung ist keine Ausführungsfreigabe.
-
-## Grafische Quellen
-
-16 eigene SVG-Icons und sechs beschriftete technische SVG-Schemata unter
-`docs/assets`, reproduzierbar mit `tools/make_assets.py`. Sie sind Dokumentations-
-assets; unterstützte Allplan-Bitmapformate, Größen und Einbindung sind noch
-nicht verifiziert. Die SVG-Vorschau dient der externen Prüfung der Testdaten.
+- Produktiver ASF→Zulagen-Workflow mit freigegebener Ergebnisinterpretation.
+- Betonattributauswertung, Mehrfachdeckenauswahl, BRep-/gekrümmte Geometrie.
+- Normberechnung, Stöße, Grundbewehrungs-Wirksamkeitsnachweis, räumliche
+  Kollisionen von Grundbewehrung/Zulagen, Öffnungsrand-/Eckbewehrung.
+- Mattenzuschnitt um Öffnungen, Mattenrotation und vollständige Katalogauswertung.
+- Interaktive Allplan-Heatmap und bearbeitbare Zulagebereiche.
+- Tatsächliche Layerauswahl/-auflösung, globale Positionsinventur,
+  transaktionales Erzeugen, persistente Elementzuordnung und sichere Löschung.
+- Plugin-Manager-Paket, Einbindung der Dokumentations-SVGs, Allplan 2027-Test.
