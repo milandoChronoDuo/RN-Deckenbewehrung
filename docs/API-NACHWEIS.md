@@ -33,3 +33,24 @@ Nicht verifiziert und deshalb nicht aufgerufen: Extraktion aller Öffnungen
 in Weltkoordinaten, atomare Erzeugungs-/Rollback-Semantik, persistente
 Elementzuordnung und sichere Löschung, Plugin-Manager-Paketformat sowie
 Icon-Einbindung. Allgemeine Dokumentation: https://pythonparts.allplan.com/2026/
+
+## Ergänzung 0.2 (19.11.2026)
+
+Vor Verwendung wurden folgende offizielle 2026-Referenzen abgerufen:
+
+- https://pythonparts.allplan.com/2026/api_reference/InterfaceStubs/NemAll_Python_Geometry/Polyhedron3D/
+  `GetVerticesCount`, `GetVertex(index) -> (error, Point3D)` ausdrücklich in
+  **globalen** Koordinaten; `GetVertices()` wäre lokal und wird nicht verwendet.
+  `GetFacesCount`, `GetFace`, `GetEdge(orientedEdge) -> (error, GeometryEdge)`.
+- https://pythonparts.allplan.com/2026/api_reference/InterfaceStubs/NemAll_Python_Geometry/PolyhedronFace/
+  `GetEdges() -> OrientedEdgeList`.
+- https://pythonparts.allplan.com/2026/api_reference/InterfaceStubs/NemAll_Python_Geometry/GeometryEdge/
+  `GetStartIndex`, `GetEndIndex`.
+- BarPlacement-Referenz: `CommonProperties` ist schreibbar.
+- Offizielles Beispiel `InteractorExamples/WallGeometryInteractor.py` für
+  Adapter.GetModelGeometry; die Eignung des ausgewählten Deckenadapters muss
+  trotzdem lokal geprüft werden. Bei anderer Geometrie wird abgebrochen.
+- `PaletteExamples/AllControls.pyp`: `ValueDialog=OpenFileDialog`, FileFilter,
+  FileExtension. PYP erneut gegen das offizielle 2026-Schema validiert.
+
+Kein Zugriff auf unbestätigte Deckenkatalog-/Transaktions-APIs hinzugefügt.

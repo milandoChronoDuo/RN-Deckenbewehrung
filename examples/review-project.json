@@ -1,0 +1,147 @@
+{
+  "schema": "RN-PROJECT-1",
+  "units": "mm_cm2_per_m",
+  "slab": {
+    "id": "demo",
+    "bottom_z_mm": 0,
+    "thickness_mm": 250,
+    "footprint": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            8000,
+            0
+          ],
+          [
+            8000,
+            6000
+          ],
+          [
+            0,
+            6000
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      ]
+    }
+  },
+  "fem": {
+    "type": "synthetic",
+    "path": "fem-test.json",
+    "alignment_confirmed": true
+  },
+  "combinations_mm": [
+    [
+      8,
+      100
+    ],
+    [
+      8,
+      150
+    ],
+    [
+      8,
+      200
+    ],
+    [
+      10,
+      100
+    ],
+    [
+      10,
+      150
+    ],
+    [
+      10,
+      200
+    ],
+    [
+      12,
+      100
+    ],
+    [
+      12,
+      150
+    ],
+    [
+      12,
+      200
+    ],
+    [
+      14,
+      100
+    ],
+    [
+      14,
+      150
+    ],
+    [
+      14,
+      200
+    ],
+    [
+      16,
+      100
+    ],
+    [
+      16,
+      150
+    ],
+    [
+      16,
+      200
+    ]
+  ],
+  "reviewed_lengths_mm": {
+    "8": {
+      "anchorage": 400,
+      "lap": 600,
+      "standard": "TEST",
+      "national_annex": "TEST",
+      "evidence": "Synthetischer Testwert, kein Normnachweis"
+    },
+    "10": {
+      "anchorage": 400,
+      "lap": 600,
+      "standard": "TEST",
+      "national_annex": "TEST",
+      "evidence": "Synthetischer Testwert, kein Normnachweis"
+    },
+    "12": {
+      "anchorage": 400,
+      "lap": 600,
+      "standard": "TEST",
+      "national_annex": "TEST",
+      "evidence": "Synthetischer Testwert, kein Normnachweis"
+    },
+    "14": {
+      "anchorage": 400,
+      "lap": 600,
+      "standard": "TEST",
+      "national_annex": "TEST",
+      "evidence": "Synthetischer Testwert, kein Normnachweis"
+    },
+    "16": {
+      "anchorage": 400,
+      "lap": 600,
+      "standard": "TEST",
+      "national_annex": "TEST",
+      "evidence": "Synthetischer Testwert, kein Normnachweis"
+    }
+  },
+  "strategy": "ausgewogen",
+  "assessment": {
+    "cover": 30,
+    "grid_mm": 500,
+    "area_step": 0.5,
+    "max_span_mm": 6000
+  }
+}

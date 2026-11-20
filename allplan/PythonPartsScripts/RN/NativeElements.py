@@ -47,3 +47,30 @@ def rectangular_mesh(mesh_name, length, width, origin, position, common_properti
     placement = Reinf.PlaneMeshPlacement(position,data,length,width,polygon)
     placement.CommonProperties = common_properties
     return placement
+
+
+def bars_from_plan(bars, common_properties_by_face, steel_grade, concrete_grade, bending_roller,
+                   occupied_positions=()):
+    """Prepare all native elements in memory; does not write to the document.
+
+    Caller must obtain actual selected CommonProperties from Allplan and a fresh
+    occupied-position inventory. No default/fabricated layer IDs are supplied.
+    """
+    bars=tuple(bars)
+    if any(b.position in occupied_positions for b in bars):
+        raise ValueError('Positionsnummer bereits im Modell belegt')
+    for face in {b.channel.face for b in bars}:
+        if face not in common_properties_by_face:
+            raise ValueError(f'Allplan-Layer/Format für {face.value} fehlt')
+    shapes={}
+    for b in bars:
+        key=(b.diameter,hypot(b.end[0]-b.start[0],b.end[1]-b.start[1]))
+        if b.position in shapes and shapes[b.position]!=key:
+            raise ValueError('Unterschiedliche Formen mit gleicher Positionsnummer')
+        shapes[b.position]=key
+    result=[]
+    for b in bars:
+        placement=straight_bar(b.start,b.end,b.diameter,b.position,steel_grade,concrete_grade,bending_roller)
+        placement.CommonProperties=common_properties_by_face[b.channel.face]
+        result.append(placement)
+    return result

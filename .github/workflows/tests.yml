@@ -15,4 +15,5 @@ jobs:
       - run: pytest -q
       - run: python -m compileall -q src allplan tools
       - run: rn-demo examples/fem-test.json --output demo-report.json
+      - run: rn-review examples/review-project.json --output review-report.json
       - run: python tools/package.py

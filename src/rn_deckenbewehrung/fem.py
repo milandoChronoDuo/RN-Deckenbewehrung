@@ -14,7 +14,8 @@ class Cell:
 
 
 def read_asf(path):
-    raise NotImplementedError("FRILO-ASF-Import noch nicht implementiert: Beispieldatei, Version und Formatprüfung fehlen")
+    from .asf import read_allplot
+    return read_allplot(path)
 
 
 def read_test_data(path, slab, *, alignment_confirmed=False):

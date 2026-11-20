@@ -3,7 +3,7 @@
   <Script>
     <Name>RN\Deckenbewehrung.py</Name>
     <Title>RN Deckenbewehrung · Entwicklungsstand</Title>
-    <Version>0.1</Version>
+    <Version>0.2</Version>
     <ReadLastInput>False</ReadLastInput>
   </Script>
   <Page>
@@ -25,9 +25,23 @@
         <Enable>False</Enable>
       </Parameter>
       <Parameter>
+        <Name>BottomZ</Name>
+        <Text>Unterkante [Weltkoordinaten]</Text>
+        <Value>Noch nicht ermittelt</Value>
+        <ValueType>String</ValueType>
+        <Enable>False</Enable>
+      </Parameter>
+      <Parameter>
+        <Name>TopZ</Name>
+        <Text>Oberkante [Weltkoordinaten]</Text>
+        <Value>Noch nicht ermittelt</Value>
+        <ValueType>String</ValueType>
+        <Enable>False</Enable>
+      </Parameter>
+      <Parameter>
         <Name>Scope</Name>
         <Text>Funktionsumfang</Text>
-        <Value>Auswahlprüfung; keine Bewehrungserzeugung.</Value>
+        <Value>Geometrie- und ASF-Prüfung; keine Erzeugung.</Value>
         <ValueType>String</ValueType>
         <Enable>False</Enable>
       </Parameter>
@@ -187,9 +201,18 @@
         </Parameters>
       </Parameter>
       <Parameter>
+        <Name>AsfPath</Name>
+        <Text>FRILO-ASF-Datei</Text>
+        <Value />
+        <ValueType>String</ValueType>
+        <ValueDialog>OpenFileDialog</ValueDialog>
+        <FileFilter>ASF-Dateien (*.asf)|*.asf|</FileFilter>
+        <FileExtension>asf</FileExtension>
+      </Parameter>
+      <Parameter>
         <Name>ImportStatus</Name>
-        <Text>FRILO-ASF</Text>
-        <Value>Beispieldatei und Formatprüfung fehlen.</Value>
+        <Text>ASF-Prüfung</Text>
+        <Value>Keine Datei gewählt.</Value>
         <ValueType>String</ValueType>
         <Enable>False</Enable>
       </Parameter>
