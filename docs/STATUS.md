@@ -1,8 +1,21 @@
-# Implementierungsstatus 0.2.0
+# Implementierungsstatus 0.3.0
 
 **Weiterhin Entwicklungsstand, keine vollständige produktive
 Bewehrungserzeugung.** Der Einstieg prüft nun Deckengeometrie und echte ASF-
 Dateien. Die automatische Erzeugung bleibt gesperrt.
+
+## Neu in 0.3 – externer Prüflauf
+
+- Räumlich indizierte FEM-Rasterauswertung mit konservativen Maximalwerten,
+  nach oben gerundeten As-Stufen und begrenzten Rechteckbereichen.
+- Explizite Geometrien für fehlende FEM-Ergebnisse und problematische Rand-/
+  Öffnungsbereiche; alle fehlgeschlagenen Verlegevorschläge im Prüfbericht.
+- Optionale protokollierte Randkorrektur mit explizitem Abstands- und Flächenlimit.
+- `rn-review` verbindet Projekt-JSON, Importfreigabe, Bereichsbildung,
+  Kandidatenbewertung und JSON-Prüfbericht. Realimport verlangt ein geprüftes,
+  an den Datei-Hash gebundenes Ergebnisprofil. Kein voreingestelltes FRILO-Profil.
+- Allplan-Palette unverändert auf Diagnosestand; diese Funktionen laufen im
+  externen Rechenkern. Siehe PRUEFLAUF.md für Umfang und Grenzen.
 
 ## Vollständig implementiert und getestet – begrenzter Rechenumfang
 

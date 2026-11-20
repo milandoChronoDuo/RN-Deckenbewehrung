@@ -51,8 +51,9 @@ Vertrag mit dem Aufrufer, keine maschinelle Verifikation einer Normquelle.
 Decken- und Öffnungskonturen, Ergebnisachsen und Zellüberlappungen. Es rotiert
 keine skalaren As-Werte in andere Richtungen. Elemente außerhalb der echten
 Deckenkontur werden abgelehnt, nicht automatisch abgeschnitten. Rundungsreste
-an Modellrändern benötigen vor produktivem Einsatz eine explizite, geprüfte
-Toleranzstrategie; die jetzige Zellübernahme bleibt dort streng.
+an Modellrändern können ab 0.3 über `import_cells` mit einer expliziten Abstands- und
+Gesamtflächenbegrenzung korrigiert werden. Alle Korrekturen werden protokolliert;
+`asf_cells` bleibt ohne Toleranzvorgabe streng. Siehe PRUEFLAUF.md.
 
 Zur endgültigen Zuordnung benötigt wird eine Formatspezifikation von
 FRILO/Allplan oder ein überprüfbarer Referenzexport mit beschrifteten vier

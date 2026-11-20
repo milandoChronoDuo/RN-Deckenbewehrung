@@ -2,8 +2,7 @@
 from dataclasses import dataclass
 from math import cos, sin, radians
 from shapely.geometry import Polygon
-from .model import ValidationError, number, CHANNELS
-from .fem import Cell
+from .model import ValidationError, number
 
 
 @dataclass(frozen=True)
@@ -77,27 +76,6 @@ class ResultMapping:
 
 
 def asf_cells(model,slab,transform,mapping):
-    from shapely import STRtree
-    check_alignment(model,slab,transform)
-    if len(model.qr3)!=1 or tuple(model.qr3[0])!=tuple(mapping.qr3):
-        raise ValidationError('QR3-Konfiguration weicht vom geprüften Importprofil ab')
-    angle=(transform.rotation_deg+mapping.axes_rotation_deg)%180
-    if min(angle,180-angle)>1e-8:
-        raise ValidationError('Ergebnisrichtungen stimmen nicht mit global X/Y überein; keine skalare As-Rotation')
-    cells=[]
-    for ident,element in model.elements.items():
-        points=[transform.xy(model.nodes[n]) for n in element[:4] if n!=0]
-        # Triangle exports may repeat one node. Remove only consecutive duplicates.
-        polygon=Polygon(points)
-        if not polygon.is_valid or polygon.is_empty or polygon.area<=0:
-            raise ValidationError(f'Element {ident}: ungültige Flächengeometrie')
-        if not slab.footprint.covers(polygon):
-            raise ValidationError(f'Element {ident}: außerhalb der Decke/innerhalb Öffnung; kein stilles Abschneiden')
-        required={ch:number(model.results[ident][col]*mapping.area_factor_to_cm2_m,'As') for ch,col in zip(CHANNELS,mapping.columns)}
-        cells.append(Cell(str(ident),polygon,required))
-    tree=STRtree([c.polygon for c in cells])
-    for i,c in enumerate(cells):
-        for j in tree.query(c.polygon,predicate='intersects'):
-            if j>i and c.polygon.intersection(cells[j].polygon).area>1e-6:
-                raise ValidationError('Überlappende FEM-Flächenelemente')
-    return cells
+    """Strict compatibility API. Audited tolerance handling lives in import_cells."""
+    from .import_quality import import_cells
+    return list(import_cells(model,slab,transform,mapping).cells)

@@ -15,7 +15,7 @@ rn-demo examples/fem-test.json --output demo-report.json
 
 ## Diagnosepalette in Allplan 2026
 
-1. `python tools/package.py` erzeugt `dist/RN-Deckenbewehrung-0.2.0-diagnose.zip`.
+1. `python tools/package.py` erzeugt `dist/RN-Deckenbewehrung-0.3.0-diagnose.zip`.
 2. ZIP entpacken. Zuerst in einem Testprojekt verwenden.
 3. Den gesamten Inhalt von `allplan/PythonPartsScripts` in einen
    vom lokalen Allplan-2026-PythonParts-System verwendeten Script-Suchpfad

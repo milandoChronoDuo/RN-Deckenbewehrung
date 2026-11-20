@@ -35,3 +35,17 @@ Allplan-Assets getestet.
   Syntaxprüfung, Diagnose-ZIP und offizielle PYP-XSD-Validierung erfolgreich.
 - Originaldatei, Prüfbericht mit Projektwerten und gerenderte Geometrie bleiben
   außerhalb des öffentlichen Repositorys.
+
+## Version 0.3.0 – 20.11.2026
+
+- 84 lokale Tests bestanden (Python 3.12), darunter konservative Abdeckung
+  dreieckiger FEM-Zellen, lokale Spitzen, getrennte Kanäle, Öffnungsbereiche,
+  unbekannte Ergebnisflächen, Teilfehler, protokollierte Randkorrektur und
+  Datei-Hash-Bindung des Ergebnisprofils.
+- Lastfall zur Skalierung: 8.100 synthetische FEM-Zellen werden räumlich
+  indiziert zu einem gleichwertigen Rechteck zusammengefasst; kein Timing-SLA.
+- `rn-review examples/review-project.json`: drei Vorschläge, ein offener
+  Prüfpunkt (fehlende FEM-Flächen), keine Ausführungsfreigabe.
+- Bestehender Stand 0.2 bestand GitHub Actions unter Python 3.11/3.12/3.13.
+  Die neuen CI-Ergebnisse stehen im aktualisierten Pull Request.
+- Allplan-Laufzeit und echte FRILO-Ergebnisspalten weiterhin nicht verifiziert.

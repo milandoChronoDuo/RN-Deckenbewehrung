@@ -1,6 +1,6 @@
 # RN Deckenbewehrung
 
-Entwicklungsstand **0.2.0** für ein Allplan-2026-PythonPart mit FRILO-FEM-Anbindung.
+Entwicklungsstand **0.3.0** für ein Allplan-2026-PythonPart mit FRILO-FEM-Anbindung.
 Das Repository enthält ausführbaren Rechen- und Optimierungscode sowie eine
 Allplan-Diagnosepalette. **Das vollständige Bewehrungsplugin ist noch nicht
 fertig; die Palette erzeugt noch keine Bewehrung.**
@@ -10,9 +10,11 @@ python -m pip install -e ".[test]"
 python -m pytest -q
 rn-demo examples/fem-test.json --output demo-report.json
 rn-asf-inspect "meine-decke.asf" --output asf-pruefbericht.json
+rn-review examples/review-project.json --output review-report.json
 python tools/package.py
 ```
 
+- [Prüflauf, Bereichsbildung und Importfreigabe](docs/PRUEFLAUF.md)
 - [Implementierungsstatus und offene Funktionen](docs/STATUS.md)
 - [Installation](docs/INSTALLATION.md)
 - [Bedienung, lokale Tests und Fehlerdiagnose](docs/BEDIENUNG-UND-TESTS.md)

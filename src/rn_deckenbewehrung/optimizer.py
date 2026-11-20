@@ -28,7 +28,7 @@ class Proposal:
 
 
 def optimize(regions, specs, slab, cover, lengths_by_diameter, strategy=Strategy.BALANCED,
-             max_spacing=250, max_length=12000, min_clear=25):
+             max_spacing=250, max_length=12000, min_clear=25, used_specs=()):
     if not isinstance(strategy, Strategy):
         raise ValidationError("Unbekannte Optimierungsstrategie")
     for v,n in ((max_spacing,"Maximaler Abstand"),(max_length,"Maximale Länge"),(min_clear,"Lichter Abstand")):
@@ -36,7 +36,7 @@ def optimize(regions, specs, slab, cover, lengths_by_diameter, strategy=Strategy
     # kg-equivalent penalties per placed bar and new diameter/spacing type.
     weights = {Strategy.STEEL:(0,0), Strategy.BALANCED:(0.15,3), Strategy.LABOUR:(2,30)}
     bar_weight, type_weight = weights[strategy]
-    selected, used = [], set()
+    selected, used = [], set(used_specs)
     for region in sorted(regions, key=lambda r:(-r.required,r.channel.face.value,r.channel.direction.value,r.sources)):
         if not region.polygon.equals(box(*region.polygon.bounds)):
             raise ValidationError("Optimierung benötigt rechteckige Bereiche; polygonale Bereiche zuerst aufteilen")

@@ -55,3 +55,11 @@ reproduzierbar für Allplan gebündelt (`tools/bundle_runtime.py`). Tests prüfe
 Quellgleichheit. `alignment` und `planning` nutzen Shapely und bleiben im
 externen Rechenkern. Einzelne Module lassen sich später an Allplan 2027
 anpassen, ohne die Berechnungen zu verändern.
+
+## Ergänzung 0.3
+
+`assessment` verbindet räumlich indizierte Ergebnisprüfung und konservative
+Rechteckbildung mit dem Optimierer. `import_quality` übernimmt ausschließlich
+explizit erlaubte, protokollierte Randkorrekturen. `review_report` und
+`review_cli` liefern einen reproduzierbaren, weiterhin nicht produktiv
+freigegebenen Gesamtprüflauf. Keine Änderungen an der Allplan-Schreibgrenze.
